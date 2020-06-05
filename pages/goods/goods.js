@@ -633,14 +633,18 @@ Page({
   addCart: function() {
     wx.requestSubscribeMessage({
       tmplIds: ['XKRJp9mjUpKX8OqpS8-oABjOhrzCTHq9LD76wvJ4Viw'],
-      success(res) { }
+      success(res) { 
+
+      }
     })
     this.submit("ADD_CART")
   },
   buyNow: function() {
     wx.requestSubscribeMessage({
       tmplIds: ['XKRJp9mjUpKX8OqpS8-oABjOhrzCTHq9LD76wvJ4Viw'],
-      success(res) { }
+      success(res) { 
+        
+      }
     })
     this.submit("BUY_NOW")
   },

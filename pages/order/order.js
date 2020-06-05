@@ -152,7 +152,9 @@ Page({
     var o = this;
     wx.requestSubscribeMessage({
       tmplIds: ['Apx-Ki01cWotiXq5YyJTecaK1NjxIbGuLjg9yaFB5sQ'],
-      success(res) { }
+      success(res) {
+        
+       }
     })
     wx.showModal({
       title: "提示",
