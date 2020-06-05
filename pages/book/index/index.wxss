@@ -1,0 +1,23 @@
+.quick-icon { position:fixed; z-index:20; right:50rpx; bottom:140rpx; }
+.quick-dial { width:100rpx; height:100rpx; border-radius:50%; display:block; mmargin-bottom:24rpx; }
+.act-modal { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 2001; vvisibility: hidden; oopacity: 0; transition: 200ms; }
+.act-modal.show { visibility: visible; opacity: 1; }
+.act-modal .act-modal-bg { background: rgba(0, 0, 0, 0.3); position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; }
+.act-modal .act-modal-pic { background: rgba(0, 0, 0, 0.25); position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; }
+.act-modal .act-modal-close wx-image { width: 50rpx; height: 50rpx; margin-top: 50rpx; }
+.quick-text { color:#ffffff; font-size:9pt; }
+.quick-bg { background-color:rgba(0,0,0,0.7); border-radius: 50%; height:100rpx; width:100rpx; }
+.scroll-view-x{ background-color: #fff; white-space: nowrap; position: fixed; top: 0; z-index: 9999; height: 92rpx; background-color: #ffecec; }
+.scroll-view-x .scroll-view-item{ display:inline-block; margin:16rpx 0rpx 16rpx 36rpx ; padding: 0 24rpx; font-size: 12pt; color:#666666; height:60rpx; line-height: 60rpx; white-space: nowrap; }
+.scroll-view-y{ border-top:1px solid #cccccc; border-bottom:1px solid #cccccc; }
+wx-swiper{ height: 304rpx; }
+.scroll-view-x .active{ color: #fff; border-radius: 30rpx; background-color: #ffa360; background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffa360), color-stop(140%,#ff5c5c)); background-image: linear-gradient(140deg, #ffa360, #ff5c5c); height: 60rpx; }
+.loading-bar{ visibility: hidden; }
+.loading-bar.active,wx-empty-bar{ visibility: visible; }
+.empty-bar{ height:80rpx; color:#919191; }
+.goods-pic wx-image{ width: 325rpx; height:325rpx; }
+.goods-item{ display: inline-block; margin: 16rpx 11.5rpx; font-size: 11pt; background-color: #ffffff; }
+.goods-title{ color: #353535; width: 352rpx; padding: 20rpx; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; height: 90rpx; line-height: 1.2; font-size: 32rpx; }
+.price{ padding: 20rpx; color: #ff4545; }
+.money{ font-size: 13pt; }
+.go-book{ width: 112rpx; height: 48rpx; border-radius: 24rpx; border:1rpx solid #ff4544; background-color: #fff5f5; }

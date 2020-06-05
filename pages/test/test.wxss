@@ -1,0 +1,2 @@
+.over-test{ -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.over-test.active{ overflow: visible; display: block; }

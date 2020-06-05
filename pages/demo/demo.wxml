@@ -1,0 +1,1 @@
+<view class="page {{__page_classes}}"><include src="/commons/header/header" /><view class="body after-navber"></view><include src="/commons/footer/footer" /></view>

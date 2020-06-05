@@ -1,0 +1,1 @@
+<view class="i-qrcode flex-row"><image bindtap="click" class="img" src="{{qrcode}}"></image></view>

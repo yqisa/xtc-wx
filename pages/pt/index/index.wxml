@@ -1,0 +1,230 @@
+<view class="page {{__page_classes}}">
+  <include src="/commons/header/header" />
+  <view class="body after-navber">
+    <block wx:if="{{pt_url}}">
+      <scroll-view class="group-top scroll-view-x">
+        <view class="flex-row flex-y-center">
+          <navigator class="search-icon flex-grow-0 flex-y-center flex-x-center" openType="navigate" url="/pages/pt/search/search">
+            <image src="{{__wxapp_img.store['search_index'].url}}"></image>
+          </navigator>
+          <view style="height:48rpx;border-right: 1rpx solid #e2e2e2;"></view>
+          <view class="flex-grow-1">
+            <scroll-view class="scroll-view-x" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+              <view bindtap="switchNav" class="scroll-view-item {{cid==0?'active':''}}" data-id="0">\n 热销 \n
+              </view>
+              <block wx:for="{{cat}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
+                <view bindtap="switchNav" class="scroll-view-item {{cid==item.id?'active':''}}" data-id="{{item.id}}">\n {{item.name}} \n
+                </view>
+              </block>
+            </scroll-view>
+          </view>
+        </view>
+      </scroll-view>
+    </block>
+    <include src="/commons/navbar/navbar" />
+    <scroll-view scrollY bindscrolltolower="pullDownLoading" class="after-navber" scrollIntoView="{{toView}}" scrollTop="{{scrollTop}}" style="height: 100%;">
+      <swiper autoplay="true" circular="true" class="banner" duration="300" indicatorActiveColor="#ff5c5c" indicatorDots="true" interval="5000" style="{{pt_url?'':'margin-top:0rpx'}}">
+        <block wx:for="{{banner}}" wx:key="{{item.id}}" wx:for-item="item" wx:for-index="index">
+          <swiper-item>
+            <navigator url="{{item.page_url}}">
+              <view class="slide-title">{{item.title}}</view>
+              <image class="slide-image" mode="aspectFill" src="{{item.pic_url}}"></image>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </scroll-view>
+    <block wx:if="{{ad&&(ad.length>0)}}">
+      <view class="advert">
+        <view class="division"></view>
+        <block wx:if="{{ad.length==1}}">
+          <view class="user-block" style="height: auto">
+            <block wx:if="{{ad[0].open_type=='wxapp'}}">
+              <navigator appId="{{ad[0].appId}}" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" path="{{ad[0].path}}" style="display:block;font-size: 0;width: 100%;height: auto;" target="miniProgram" url="{{ad[0].url}}">
+                <image mode="widthFix" src="{{ad[0].pic_url}}" style="width: 100%;"></image>
+              </navigator>
+            </block>
+            <block wx:else>
+              <navigator bindtap="navigatorClick" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" style="display:block;font-size: 0;width: 100%;height: auto;" url="{{ad[0].url}}">
+                <image mode="widthFix" src="{{ad[0].pic_url}}" style="width: 100%;"></image>
+              </navigator>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{ad.length==2}}">
+          <view class="flex-row user-block" style="height: 360rpx;">
+            <view class="flex-grow-0" style="width: 300rpx;height: 100%; border-right: 5rpx solid transparent">
+              <block wx:if="{{ad[0].open_type=='wxapp'}}">
+                <navigator appId="{{ad[0].appId}}" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" path="{{ad[0].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+              <block wx:else>
+                <navigator bindtap="navigatorClick" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+            </view>
+            <view class="flex-grow-1" style="height: 100%;">
+              <block wx:if="{{ad[1].open_type=='wxapp'}}">
+                <navigator appId="{{ad[1].appId}}" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" path="{{ad[1].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[1].url}}">
+                  <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+              <block wx:else>
+                <navigator bindtap="navigatorClick" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[1].url}}">
+                  <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{ad.length==3}}">
+          <view class="flex-row user-block" style="height: 360rpx;">
+            <view class="flex-grow-0" style="width: 300rpx;height: 100%;border-right: 5rpx solid transparent">
+              <block wx:if="{{ad[0].open_type=='wxapp'}}">
+                <navigator appId="{{ad[0].appId}}" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" path="{{ad[0].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+              <block wx:else>
+                <navigator bindtap="navigatorClick" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+            </view>
+            <view class="flex-grow-1 flex-col" style="height: 100%;">
+              <view class="flex-grow-1" style="height: 50%;border-bottom: 5rpx solid transparent">
+                <block wx:if="{{ad[1].open_type=='wxapp'}}">
+                  <navigator appId="{{ad[1].appId}}" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" path="{{ad[1].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[1].url}}">
+                    <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+                <block wx:else>
+                  <navigator bindtap="navigatorClick" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[1].url}}">
+                    <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+              </view>
+              <view class="flex-grow-1" style="height: 50%">
+                <block wx:if="{{ad[2].open_type=='wxapp'}}">
+                  <navigator appId="{{ad[2].appId}}" data-open_type="{{ad[2].open_type}}" data-url="{{ad[2].url}}" path="{{ad[2].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[2].url}}">
+                    <image mode="aspectFill" src="{{ad[2].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+                <block wx:else>
+                  <navigator bindtap="navigatorClick" data-open_type="{{ad[2].open_type}}" data-url="{{ad[2].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[2].url}}">
+                    <image mode="aspectFill" src="{{ad[2].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{ad.length==4}}">
+          <view class="flex-row user-block" style="height: 360rpx;">
+            <view class="flex-grow-0" style="width: 300rpx;height: 100%;border-right: 5rpx solid transparent">
+              <block wx:if="{{ad[0].open_type=='wxapp'}}">
+                <navigator appId="{{ad[0].appId}}" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" path="{{ad[0].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+              <block wx:else>
+                <navigator bindtap="navigatorClick" data-open_type="{{ad[0].open_type}}" data-url="{{ad[0].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[0].url}}">
+                  <image mode="aspectFill" src="{{ad[0].pic_url}}" style="width: 100%;height: 100%;"></image>
+                </navigator>
+              </block>
+            </view>
+            <view class="flex-grow-1 flex-col" style="height: 100%">
+              <view class="flex-grow-1" style="height: 50%;border-bottom: 5rpx solid transparent">
+                <block wx:if="{{ad[1].open_type=='wxapp'}}">
+                  <navigator appId="{{ad[1].appId}}" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" path="{{ad[1].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[1].url}}">
+                    <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+                <block wx:else>
+                  <navigator bindtap="navigatorClick" data-open_type="{{ad[1].open_type}}" data-url="{{ad[1].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[1].url}}">
+                    <image mode="aspectFill" src="{{ad[1].pic_url}}" style="width: 100%;height: 100%;"></image>
+                  </navigator>
+                </block>
+              </view>
+              <view class="flex-grow-1 flex-row" style="height: 50%">
+                <view class="flex-grow-1" style="height: 100%;border-right: 5rpx solid transparent">
+                  <block wx:if="{{ad[2].open_type=='wxapp'}}">
+                    <navigator appId="{{ad[2].appId}}" data-open_type="{{ad[2].open_type}}" data-url="{{ad[2].url}}" path="{{ad[2].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[2].url}}">
+                      <image mode="aspectFill" src="{{ad[2].pic_url}}" style="width: 100%;height: 100%;"></image>
+                    </navigator>
+                  </block>
+                  <block wx:else>
+                    <navigator bindtap="navigatorClick" data-open_type="{{ad[2].open_type}}" data-url="{{ad[2].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[2].url}}">
+                      <image mode="aspectFill" src="{{ad[2].pic_url}}" style="width: 100%;height: 100%;"></image>
+                    </navigator>
+                  </block>
+                </view>
+                <view class="flex-grow-1" style="height: 100%;">
+                  <block wx:if="{{ad[3].open_type=='wxapp'}}">
+                    <navigator appId="{{ad[3].appId}}" data-open_type="{{ad[3].open_type}}" data-url="{{ad[3].url}}" path="{{ad[3].path}}" style="display:block;font-size: 0;width: 100%;height: 100%;" target="miniProgram" url="{{ad[3].url}}">
+                      <image mode="aspectFill" src="{{ad[3].pic_url}}" style="width: 100%;height: 100%;"></image>
+                    </navigator>
+                  </block>
+                  <block wx:else>
+                    <navigator bindtap="navigatorClick" data-open_type="{{ad[3].open_type}}" data-url="{{ad[3].url}}" style="display:block;font-size: 0;width: 100%;height: 100%;" url="{{ad[3].url}}">
+                      <image mode="aspectFill" src="{{ad[3].pic_url}}" style="width: 100%;height: 100%;"></image>
+                    </navigator>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <view class="division"></view>
+    <block wx:for="{{goods}}" wx:key="{{item.id}}" wx:for-item="item" wx:for-index="index">
+      <navigator class="list-item flex-row" openType="navigate" url="/pages/pt/details/details?gid={{item.id}}">
+        <view class="flex-grow-0 corver-pic">
+          <image lazyLoad="true" src="{{item.cover_pic}}"></image>
+        </view>
+        <view class="flex-grow-1 flex-col">
+          <view class="flex-grow-1 goods-title">\n {{item.name}} \n
+          </view>
+          <view class="flex-grow-0 flex-row">
+            <block wx:if="{{item.groupList[0]}}">
+              <view class="group-item">
+                <block wx:for="{{item.groupList}}" wx:key="{{item.id}}" wx:for-item="group" wx:for-index="index">
+                  <view>
+                    <image src="{{group.avatar_url}}"></image>
+                  </view>
+                </block>
+              </view>
+            </block>
+            <view class="goods-sales">\n 已团 {{item.virtual_sales}} 件 \n
+            </view>
+          </view>
+          <view class="flex-grow-0 flex-row flex-y-bottom">
+            <view class="flex-grow-0 price flex-row flex-y-bottom">
+              <view class="unit flex-grow-0 flex-y-bottom">\n ¥ \n
+              </view>
+              <view class="flex-grow-1 flex-y-bottom">{{item.price}}</view>
+            </view>
+            <view class="flex-grow-1 old-price flex-y-bottom">\n ¥ {{item.original_price}} \n
+            </view>
+            <view class="flex-grow-0 group-btn flex-x-center flex-y-center">\n 去开团 \n
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <view class="loading-bar {{show_loading_bar?'active':''}}" style="text-align: center;{{emptyGoods==1?'display:none':''}}">
+      <image src="{{__wxapp_img.system.loading.url}}" style="width: 160rpx;height: 80rpx"></image>
+    </view>
+    <block wx:if="{{is_show}}">
+      <view class="empty-bar flex-row flex-x-center flex-y-center">\n 没有更多商品了~ \n
+      </view>
+    </block>
+    <include src="/commons/get-coupon/get-coupon.wxml" />
+    <include src="/commons/quick-navigation/quick-navigation.wxml" />
+    <include src="/commons/get-coupon/get-coupon.wxml" />
+  </view>
+  <include src="/commons/footer/footer" />
+</view>

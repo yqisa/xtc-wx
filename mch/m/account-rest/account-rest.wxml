@@ -1,0 +1,1 @@
+<include src="/commons/extension/extension" /><include src="/commons/navbar/navbar" /><view class="after-navber"><text>示例页面</text></view>

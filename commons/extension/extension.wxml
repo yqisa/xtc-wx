@@ -1,0 +1,1 @@
+<block wx:if="{{_toast}}" ><view id="_toast"><view class="{{_toast.hide?'hide':''}}" id="_toast_title"><text>{{_toast.title}}</text></view></view></block><block wx:if="{{_loading}}" ><view class=" flex-row flex-x-center flex-y-center" id="_loading"><view class="{{_loading?'hide':''}}"><image src="{{__wxapp_img.system.loading2.url}}"></image></view></view></block>
