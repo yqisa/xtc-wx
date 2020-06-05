@@ -11,13 +11,17 @@ Page({
   fhtz: function (e) {
     wx.requestSubscribeMessage({
       tmplIds: ['aw-OgQN7k921wKHHIQoLKmmQKuWEI1UAtwqhBU1RwhU'],
-      success(res) { }
+      success(res) {
+
+       }
     })
   },
   shtz:function(e) {
     wx.requestSubscribeMessage({
       tmplIds: ['aISkCSBHp_Jvl6zHOvDtAHm-Sr9dTXT9Gb1rgJ4LxKE'],
-      success(res) { }
+      success(res) { 
+        
+      }
     })
   },
   loadData: function(a) {
